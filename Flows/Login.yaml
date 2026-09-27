@@ -1,0 +1,27 @@
+appId: com.sci.glidego_rider
+---
+- launchApp:
+    clearState: true
+
+- tapOn: "English"
+- tapOn: "Continue"
+
+- repeat:
+    times: 8
+    commands:
+      - tapOn:
+          point: 45%,10%
+
+# ---------------- Load test data (row 1 = valid credentials) ----------------
+- runScript: "../Scripts/LoginTestData/LoginData.js"
+
+- tapOn: "Enter your mail"
+- inputText: ${output.email}
+- tapOn: "Done"
+
+- tapOn: "Enter your password"
+- inputText: ${output.password}
+- tapOn: "Done"
+
+- tapOn: "Sign In"
+- assertVisible: ${output.expected}

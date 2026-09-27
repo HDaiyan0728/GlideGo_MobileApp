@@ -1,0 +1,30 @@
+[
+  {
+    "testCaseId": "TC_006",
+    "description": "Happy path: create a Vehicle Assignment request with one stop, non-professional driver + supervisor, budget line and additional comments",
+    "pickupSearch": "Save the Children",
+    "pickupFull": "Save the Children, 35, Road 43, Gulshan 2, Gulshan, Dhaka, Dhaka Metropolitan, Dhaka District, Dhaka Division, 1212, Bangladesh",
+    "pickupShort": "Save the Children, 35, Road 43, Gulshan 2, Gulshan, Dhaka, 1212",
+    "dropoffSearch": "Mirpur 10",
+    "dropoffFull": "Mirpur-10, Bangladesh",
+    "purpose": "Automation_MobileTest_vehicleAssignment",
+    "tripType": "Vehicle Assignment",
+    "office": "Bangladesh Country Office",
+    "startDatePicker": "14, Wednesday, October 14, 2026",
+    "startAmPm": "PM",
+    "startHour": "12",
+    "startMinute": "00",
+    "startDateTimeReview": "14 Oct 2026, 12:00 PM",
+    "startDateTimeConfirm": "14 Oct, 2026 12:00 PM",
+    "endDatePicker": "14, Wednesday, October 14, 2026",
+    "endAmPm": "PM",
+    "endHour": "08",
+    "endMinute": "00",
+    "endDateTimeReview": "14 Oct 2026, 08:00 PM",
+    "endDateTimeConfirm": "14 Oct, 2026 8:00 PM",
+    "driverName": "Mohaimin",
+    "driverSupervisor": "Sadia Hasan Hima",
+    "budgetLine": "Test SOF",
+    "additionalComments": "testtest"
+  }
+]

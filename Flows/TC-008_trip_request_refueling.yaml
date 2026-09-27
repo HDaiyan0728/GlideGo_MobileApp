@@ -1,0 +1,224 @@
+appId: com.sci.glidego_rider
+
+name: TC-008 Trip Request - Refueling Trip Flow
+
+description: |
+  Data-driven end-to-end happy-path test for creating a "Refueling Trip" request.
+  Logs in via Login.yaml, then fills Pickup / Dropoff / Stop, Trip purpose, Type of trip,
+  Local office, Vehicle selection, Pickup & Dropoff date-time, Budget line and
+  Additional Comments, then re-verifies every value on both the Review and the
+  Confirmation ("View Trip Details") screens.
+  Test data is fetched at runtime from Scripts/TripTestData/Refueling.js (http://localhost:8080/Refueling).
+
+properties:
+  testCaseId: TC_008
+  priority: High
+  suite: Trip Request
+  type: E2E
+  flow: Refueling Trip
+  tags: "smoke,regression,refueling"
+  owner: Hasin Daiyan
+  dataSource: http://localhost:8080/Refueling
+
+---
+# ---------------- Step 1: reset app & login ----------------
+- launchApp:
+    clearState: true
+- runFlow: Login.yaml
+
+# ---------------- Step 2: load test data for this sheet (1 row) ----------------
+- runScript: "../Scripts/TripTestData/Refueling.js"
+
+# ==================== Trip flow ====================
+- extendedWaitUntil:
+    visible: "Request a Trip"
+    timeout: 2000
+- tapOn: "Request a Trip"
+
+# ==================== Pickup ====================
+- extendedWaitUntil:
+    visible: "Pickup Location"
+    timeout: 2000
+- tapOn: "Pickup Location"
+- inputText: ${output.pickupSearch}
+- tapOn: "Done"
+- tapOn: ${output.pickupFull}
+
+# ==================== Dropoff ====================
+- extendedWaitUntil:
+    visible: "Dropoff Location"
+    timeout: 2000
+- tapOn: "Dropoff Location"
+- inputText: ${output.dropoffSearch}
+- tapOn: "Done"
+- tapOn: ${output.dropoffFull}
+
+# ==================== Add Stop ====================
+- extendedWaitUntil:
+    visible: "Add Stop"
+    timeout: 2000
+- tapOn: "Add Stop"
+- tapOn: "Dropoff Location"
+- inputText: ${output.pickupSearch}
+- tapOn: "Done"
+- tapOn: ${output.pickupFull}
+
+- scrollUntilVisible:
+    element: "Confirm Route"
+- tapOn: "Confirm Route"
+
+# ============= Trip purpose / type / office =============
+- extendedWaitUntil:
+    visible: "Enter purpose of trip"
+    timeout: 2000
+- tapOn: "Enter purpose of trip"
+- inputText: ${output.purpose}
+- tapOn: "Done"
+
+- tapOn: "Select Type of Trip"
+- tapOn: ${output.tripType}
+
+- tapOn: "Select the local office assigning the vehicle"
+- tapOn: ${output.office}
+
+# ==================== Vehicle Selection ====================
+- extendedWaitUntil:
+    visible: "Select Your Vehicle"
+    timeout: 2000
+- tapOn: "Select Your Vehicle"
+- tapOn: "Select Your Vehicle"
+- inputText: ${output.vehicleSearch}
+- tapOn: "Done"
+- tapOn: ${output.vehicleResult}
+
+# ==================== Pickup Date & Time ====================
+- extendedWaitUntil:
+    visible: "Set Pickup Date & Time"
+    timeout: 2000
+- tapOn: "Set Pickup Date & Time"
+- tapOn: "Next month"
+- tapOn: ${output.pickupDatePicker}
+- tapOn: "OK"
+- tapOn: "Switch to text input mode"
+- tapOn: ${output.pickupAmPm}
+- doubleTapOn: "Hour"
+- eraseText
+- inputText: ${output.pickupHour}
+- doubleTapOn: "Minute"
+- eraseText
+- inputText: ${output.pickupMinute}
+- tapOn: "OK"
+
+# ==================== Dropoff Date & Time ====================
+- extendedWaitUntil:
+    visible: "Set Dropoff Date & Time"
+    timeout: 2000
+- tapOn: "Set Dropoff Date & Time"
+- tapOn: ${output.dropoffDatePicker}
+- tapOn: "OK"
+- tapOn: "Switch to text input mode"
+- tapOn: ${output.dropoffAmPm}
+- doubleTapOn: "Hour"
+- eraseText
+- inputText: ${output.dropoffHour}
+- doubleTapOn: "Minute"
+- eraseText
+- inputText: ${output.dropoffMinute}
+- tapOn: "OK"
+
+- scrollUntilVisible:
+    element: "Review"
+
+# ==================== Budget Line ====================
+- extendedWaitUntil:
+    visible: "Select Budget Line"
+    timeout: 2000
+- tapOn: "Select Budget Line"
+- tapOn: ${output.budgetLine}
+
+# ==================== Additional Comments ====================
+- extendedWaitUntil:
+    visible: "Enter Additional Comments"
+    timeout: 2000
+- tapOn: "Enter Additional Comments"
+- inputText: ${output.additionalComments}
+- hideKeyboard
+
+- tapOn: "Review"
+
+# ============================================================
+# REVIEW SCREEN ASSERTIONS
+# ============================================================
+- extendedWaitUntil:
+    visible: "PickUp Location"
+    timeout: 2000
+- assertVisible: "PickUp Location"
+- assertVisible: ${output.pickupShort}
+- assertVisible: "Stop 1"
+- assertVisible: ${output.dropoffFull}
+- assertVisible: "Drop Off Location"
+- assertVisible:
+    text: ${output.pickupShort}
+    index: 1
+
+- assertVisible: "Trip Overview"
+- assertVisible: "Purpose of Travel:"
+- assertVisible: ${output.purpose}
+- assertVisible: "Type of Travel:"
+- assertVisible: ${output.tripType}
+- assertVisible: "Pickup Date & Time:"
+- assertVisible: ${output.pickupDateTimeReview}
+
+- assertVisible: "Dropoff Date & Time:"
+- assertVisible: ${output.dropoffDateTimeReview}
+
+- scrollUntilVisible:
+    element: "Submit Request"
+
+- assertVisible: "Budget Line:"
+- assertVisible: ${output.budgetLine}
+- assertVisible: "Additional Comments"
+- assertVisible: ${output.additionalComments}
+
+- tapOn: "Submit Request"
+
+# ------------------------------------------------------------
+# Confirmation screen: re-verify all entered data
+# ------------------------------------------------------------
+- extendedWaitUntil:
+    visible: "View Trip Details"
+    timeout: 2000
+- assertVisible: "View Trip Details"
+- tapOn: "View Trip Details"
+
+- assertVisible: "PickUp Location"
+- assertVisible: ${output.pickupShort}
+- assertVisible: "Stop 1"
+- assertVisible: ${output.dropoffFull}
+- assertVisible: "Drop Off Location"
+- assertVisible:
+    text: ${output.pickupShort}
+    index: 1
+
+- assertVisible: "Trip Overview"
+- assertVisible: "Purpose of Travel:"
+- assertVisible: ${output.purpose}
+- assertVisible: "Type of Travel:"
+- assertVisible: ${output.tripType}
+- assertVisible: "Pickup Date & Time:"
+- assertVisible: ${output.pickupDateTimeConfirm}
+
+- assertVisible: "Dropoff Date & Time:"
+- assertVisible: ${output.dropoffDateTimeConfirm}
+
+- scrollUntilVisible:
+    element: "Additional Comments"
+
+- assertVisible: "Budget Line:"
+- assertVisible: ${output.budgetLine}
+
+- assertVisible: "Additional Comments"
+- assertVisible: ${output.additionalComments}
+
+# ---------------- End of test case: clean shutdown ----------------
+- killApp

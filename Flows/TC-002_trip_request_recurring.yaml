@@ -1,0 +1,311 @@
+appId: com.sci.glidego_rider
+
+name: TC-002 Trip Request - Recurring Trip Flow
+
+description: |
+  Data-driven end-to-end happy-path test for creating a "Recurring Trip" request.
+  Logs in via Login.yaml, then fills Pickup / Dropoff / Stop, Trip purpose, Type of trip,
+  Local office, Pickup & Dropoff date-time, Lead Passenger, Supervisor, SCI & Non-SCI
+  passengers, Budget line and Heavy-Equipment details, and finally re-verifies every
+  value on both the Review and the Confirmation ("View Trip Details") screens.
+  Test data is fetched at runtime from Scripts/TripTestData/Recurring.js (http://localhost:8080/Recurring).
+
+properties:
+  testCaseId: TC_002
+  priority: High
+  suite: Trip Request
+  type: E2E
+  flow: Recurring Trip
+  tags: "smoke,regression,recurring"
+  owner: Hasin Daiyan
+  dataSource: http://localhost:8080/Recurring
+
+---
+# ---------------- Step 1: reset app & login ----------------
+- launchApp:
+    clearState: true
+- runFlow: Login.yaml
+
+# ---------------- Step 2: load test data for this sheet (1 row) ----------------
+- runScript: "../Scripts/TripTestData/Recurring.js"
+
+# ==================== Trip flow ====================
+- extendedWaitUntil:
+    visible: "Request a Trip"
+    timeout: 2000
+- tapOn: "Request a Trip"
+
+# ==================== Pickup ====================
+- extendedWaitUntil:
+    visible: "Pickup Location"
+    timeout: 2000
+- tapOn: "Pickup Location"
+- inputText: ${output.pickupSearch}
+- tapOn: "Done"
+- tapOn: ${output.pickupFull}
+
+# ==================== Dropoff ====================
+- extendedWaitUntil:
+    visible: "Dropoff Location"
+    timeout: 2000
+- tapOn: "Dropoff Location"
+- inputText: ${output.dropoffSearch}
+- tapOn: "Done"
+- tapOn: ${output.dropoffFull}
+
+# ==================== Add Stop ====================
+- extendedWaitUntil:
+    visible: "Add Stop"
+    timeout: 2000
+- tapOn: "Add Stop"
+- tapOn: "Dropoff Location"
+- inputText: ${output.pickupSearch}
+- tapOn: "Done"
+- tapOn: ${output.pickupFull}
+
+- scrollUntilVisible:
+    element: "Confirm Route"
+- tapOn: "Confirm Route"
+
+# ============= Trip purpose / type / office =============
+- extendedWaitUntil:
+    visible: "Enter purpose of trip"
+    timeout: 2000
+- tapOn: "Enter purpose of trip"
+- inputText: ${output.purpose}
+- tapOn: "Done"
+
+- tapOn: "Select Type of Trip"
+- tapOn: ${output.tripType}
+
+- tapOn: "Select the local office assigning the vehicle"
+- tapOn: ${output.office}
+
+# ==================== Pickup Date & Time ====================
+- extendedWaitUntil:
+    visible: "Set Pickup Date & Time"
+    timeout: 2000
+- tapOn: "Set Pickup Date & Time"
+- tapOn: "Next month"
+- tapOn: ${output.pickupDatePicker}
+- tapOn: "OK"
+- tapOn: "Switch to text input mode"
+- tapOn: ${output.pickupAmPm}
+- doubleTapOn: "Hour"
+- eraseText
+- inputText: ${output.pickupHour}
+- doubleTapOn: "Minute"
+- eraseText
+- inputText: ${output.pickupMinute}
+- tapOn: "OK"
+
+# ==================== Dropoff Date & Time ====================
+- extendedWaitUntil:
+    visible: "Set Dropoff Date & Time"
+    timeout: 2000
+- tapOn: "Set Dropoff Date & Time"
+
+- tapOn: ${output.dropoffDatePicker}
+- tapOn: "OK"
+- tapOn: "Switch to text input mode"
+- tapOn: ${output.dropoffAmPm}
+- doubleTapOn: "Hour"
+- eraseText
+- inputText: ${output.dropoffHour}
+- doubleTapOn: "Minute"
+- eraseText
+- inputText: ${output.dropoffMinute}
+- tapOn: "OK"
+
+# ==================== Lead Passenger ====================
+- extendedWaitUntil:
+    visible: "Select Lead Passenger"
+    timeout: 2000
+- tapOn: "Select Lead Passenger"
+- tapOn: "Search Lead Passenger"
+- inputText: ${output.leadPassenger}
+- tapOn: "Done"
+- tapOn:
+    text: ${output.leadPassenger}
+    index: 1
+
+# ==================== Supervisor ====================
+- extendedWaitUntil:
+    visible: "Select Lead Passenger's Supervisor"
+    timeout: 2000
+- scrollUntilVisible:
+    element: "Select Lead Passenger's Supervisor"
+- tapOn: "Select Lead Passenger's Supervisor"
+- tapOn: "Search Lead Passenger's Supervisor"
+- inputText: ${output.supervisor}
+- tapOn: "Done"
+- tapOn:
+    text: ${output.supervisor}
+    index: 1
+
+# ==================== Other SCI Passenger ====================
+- extendedWaitUntil:
+    visible: "Select Other SCI Passenger Name"
+    timeout: 2000
+- tapOn: "Select Other SCI Passenger Name"
+- tapOn: ${output.sciPassenger}
+
+# ==================== Non-SCI Passenger ====================
+- extendedWaitUntil:
+    visible: "Add Non-SCI Passenger"
+    timeout: 2000
+- scrollUntilVisible:
+    element: "Review"
+
+- tapOn:
+    below: "Non-SCI Passenger Name"
+    rightOf: "Add Non-SCI Passenger"
+    index: 0
+
+- tapOn: "Add Non-SCI Passenger Name"
+- inputText: ${output.nonSciName}
+- tapOn: "Done"
+- tapOn: "Enter Phone Number"
+- inputText: ${output.nonSciPhone}
+- tapOn: "Done"
+- tapOn: "Add Passenger"
+
+# ==================== Budget Line ====================
+- extendedWaitUntil:
+    visible: "Select Budget Line"
+    timeout: 2000
+- tapOn: "Select Budget Line"
+- tapOn: ${output.budgetLine}
+
+# ==================== Heavy Equipment ====================
+- extendedWaitUntil:
+    visible: "Heavy Equipment Transportation"
+    timeout: 2000
+- tapOn:
+    below: "Special Requirements"
+    leftOf: "Heavy Equipment Transportation"
+
+- tapOn: "Enter Description of Heavy Equipment"
+- inputText: ${output.equipmentDescription}
+- tapOn: "Done"
+
+- tapOn: "Enter Numbers"
+- inputText: ${output.equipmentWeight}
+- tapOn: "Done"
+- tapOn: "Select Weight Unit"
+- tapOn: ${output.equipmentWeightUnit}
+
+- tapOn: "Enter Additional Comments"
+- inputText: ${output.additionalComments}
+- hideKeyboard
+
+- tapOn: "Review"
+
+# ============================================================
+# REVIEW SCREEN ASSERTIONS
+# ============================================================
+- extendedWaitUntil:
+    visible: "PickUp Location"
+    timeout: 2000
+- assertVisible: "PickUp Location"
+- assertVisible: ${output.pickupShort}
+- assertVisible: "Stop 1"
+- assertVisible: ${output.dropoffFull}
+- assertVisible: "Drop Off Location"
+- assertVisible:
+    text: ${output.pickupShort}
+    index: 1
+
+- assertVisible: "Trip Overview"
+- assertVisible: "Purpose of Travel:"
+- assertVisible: ${output.purpose}
+- assertVisible: "Type of Travel:"
+- assertVisible: ${output.tripType}
+- assertVisible: "Pickup Date & Time:"
+- assertVisible: ${output.pickupDateTimeReview}
+
+- assertVisible: "Dropoff Date & Time:"
+- assertVisible: ${output.dropoffDateTimeReview}
+
+- assertVisible: "Passenger Information"
+- assertVisible: "Lead Passenger Name:"
+- assertVisible: ${output.leadPassenger}
+
+- scrollUntilVisible:
+    element: "Submit Request"
+
+- assertVisible: "Lead Passenger Supervisor:"
+- assertVisible: ${output.supervisor}
+- assertVisible: "SCI Passengers:"
+- assertVisible: ${output.sciPassenger}
+- assertVisible: "Non SCI Passengers:"
+- assertVisible: ${output.nonSciCombined}
+
+- assertVisible: "Budget Line:"
+- assertVisible: ${output.budgetLine}
+
+- assertVisible: "Equipment Description:"
+- assertVisible: ${output.equipmentDescription}
+
+- assertVisible: "Estimated Weight:"
+- assertVisible: ${output.equipmentWeightReview}
+- assertVisible: "Additional Comments"
+- assertVisible: ${output.additionalComments}
+
+- tapOn: "Submit Request"
+
+# ------------------------------------------------------------
+# Confirmation screen: re-verify all entered data
+# ------------------------------------------------------------
+- extendedWaitUntil:
+    visible: "View Trip Details"
+    timeout: 2000
+- assertVisible: "View Trip Details"
+- tapOn: "View Trip Details"
+
+- assertVisible: "PickUp Location"
+- assertVisible: ${output.pickupShort}
+- assertVisible: "Stop 1"
+- assertVisible: ${output.dropoffFull}
+- assertVisible: "Drop Off Location"
+- assertVisible:
+    text: ${output.pickupShort}
+    index: 1
+
+- assertVisible: "Trip Overview"
+- assertVisible: "Purpose of Travel:"
+- assertVisible: ${output.purpose}
+- assertVisible: "Type of Travel:"
+- assertVisible: ${output.tripType}
+- assertVisible: "Pickup Date & Time:"
+- assertVisible: ${output.pickupDateTimeConfirm}
+
+- assertVisible: "Dropoff Date & Time:"
+- assertVisible: ${output.dropoffDateTimeConfirm}
+
+- scrollUntilVisible:
+    element: "Additional Comments"
+
+- assertVisible: "Passenger Information"
+- assertVisible: "Lead Passenger Name:"
+- assertVisible: ${output.leadPassenger}
+
+- assertVisible: "SCI Passengers:"
+- assertVisible: ${output.sciPassengerReview}
+
+- assertVisible: "Non SCI Passengers:"
+- assertVisible: ${output.nonSciCombined}
+
+- assertVisible: "Budget Line:"
+- assertVisible: ${output.budgetLine}
+
+- assertVisible: "Equipment Description:"
+- assertVisible: ${output.equipmentDescription}
+
+- assertVisible: "Estimated Weight:"
+- assertVisible: ${output.equipmentWeightReview}
+- assertVisible: "Additional Comments"
+- assertVisible: ${output.additionalComments}
+
+# ---------------- End of test case: clean shutdown ----------------
+- killApp

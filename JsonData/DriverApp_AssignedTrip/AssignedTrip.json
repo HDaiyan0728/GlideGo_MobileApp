@@ -1,0 +1,12 @@
+[
+  {
+    "tripId": 500001039,
+    "tripName": "Automation_MobileTest_Maintainance",
+    "searchText": "Automation_MobileTest_Maintainance",
+    "newOdometer": 56,
+    "refuelLiters": 5,
+    "refuelAmount": 1000,
+    "refuelOdometer": 57,
+    "endOdometer": 58
+  }
+]

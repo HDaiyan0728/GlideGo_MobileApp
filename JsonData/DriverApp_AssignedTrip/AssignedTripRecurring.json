@@ -1,0 +1,22 @@
+[
+  {
+    "tripId": "500001115",
+    "tripName": "Automation_MobileTest_recurring",
+    "searchText": "Automation_MobileTest_recurring",
+    "newOdometer": "77",
+    "refuelLiters": "5",
+    "refuelAmount": "1000",
+    "refuelOdometer": "77",
+    "endOdometer": "78"
+  },
+  {
+    "tripId": "500001116",
+    "tripName": "Automation_MobileTest_recurring",
+    "searchText": "Automation_MobileTest_recurring",
+    "newOdometer": "80",
+    "refuelLiters": "5",
+    "refuelAmount": "1000",
+    "refuelOdometer": "81",
+    "endOdometer": "82"
+  }
+]

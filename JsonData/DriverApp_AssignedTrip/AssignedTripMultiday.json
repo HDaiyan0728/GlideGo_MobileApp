@@ -1,0 +1,12 @@
+[
+  {
+    "tripId": "500001106",
+    "tripName": "Automation_MobileTest_outofCity_multiday",
+    "searchText": "Automation_MobileTest_outofCity_multiday",
+    "newOdometer": "64",
+    "refuelLiters": "5",
+    "refuelAmount": "1000",
+    "refuelOdometer": "65",
+    "endOdometer": "66"
+  }
+]

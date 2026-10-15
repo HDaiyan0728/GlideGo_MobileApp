@@ -1,0 +1,8 @@
+[
+  {
+    "tripTitle": "Automation_MobileTest_recurring",
+    "tripId": "500001117",
+    "rejectReason": "testreject",
+    "expected": "Rejected"
+  }
+]

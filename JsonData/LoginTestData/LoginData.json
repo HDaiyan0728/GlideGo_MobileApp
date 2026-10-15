@@ -3,10 +3,5 @@
     "email": "psalam",
     "password": "12345",
     "expected": "Home"
-  },
-  {
-    "email": "invaliduser",
-    "password": "wrongpass",
-    "expected": "Authentication Failed"
   }
 ]

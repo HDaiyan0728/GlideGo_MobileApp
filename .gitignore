@@ -34,3 +34,5 @@ Desktop.ini
 ~$*.xlsx
 ~$*.xls
 *.tmp
+# Maestro debug output of the last run (live steps, failure screenshots)
+.runs/

@@ -1,0 +1,27 @@
+appId: com.sci.glidego_rider
+---
+- launchApp:
+    clearState: true
+
+- tapOn: "English"
+- tapOn: "Continue"
+
+# Dismiss 8 onboarding slides by tapping near the top
+- repeat:
+    times: 8
+    commands:
+      - tapOn:
+          point: 45%,10%
+
+- runScript: "../Scripts/LoginTestData/BudgetHolderLoginData.js"
+
+- tapOn: "Enter your mail"
+- inputText: ${output.email}
+- tapOn: "Done"
+
+- tapOn: "Enter your password"
+- inputText: ${output.password}
+- tapOn: "Done"
+
+- tapOn: "Sign In"
+- assertVisible: ${output.expected}

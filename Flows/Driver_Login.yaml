@@ -1,4 +1,4 @@
-appId: com.sci.glidego_rider
+appId: com.sci.glidego_driver
 ---
 - launchApp:
     clearState: true
@@ -12,9 +12,13 @@ appId: com.sci.glidego_rider
       - tapOn:
           point: 45%,10%
 
-- runScript: "../../Scripts/LoginTestData/BudgetHolderLoginData.js"
 
-- tapOn: "Enter your mail"
+- runScript: "../Scripts/LoginTestData/DriverLogin.js"
+
+
+- tapOn: "Continue as Guest"
+
+- tapOn: "Enter your email"
 - inputText: ${output.email}
 - tapOn: "Done"
 

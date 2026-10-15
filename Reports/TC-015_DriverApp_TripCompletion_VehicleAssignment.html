@@ -1,0 +1,339 @@
+<html>
+  <head>
+    <title>Maestro Test Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="card mb-4">
+      <div class="card-body">
+        <h1 class="mt-5 text-center">Flow Execution Summary</h1>
+<br>Test Result: FAILED<br>Duration: 3m 45.356s<br>Start Time: <time datetime="2026-10-08T12:11:03.585+06:00">Oct 8, 2026, 12:11:03 BDT</time><br><br>
+        <div class="card-group mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title text-center">Total number of Flows</h5>
+              <h3 class="card-text text-center">1</h3>
+            </div>
+          </div>
+          <div class="card text-white bg-danger">
+            <div class="card-body">
+              <h5 class="card-title text-center">Failed Flows</h5>
+              <h3 class="card-text text-center">1</h3>
+            </div>
+          </div>
+          <div class="card text-white bg-success">
+            <div class="card-body">
+              <h5 class="card-title text-center">Successful Flows</h5>
+              <h3 class="card-text text-center">0</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card border-danger mb-3">
+          <div class="card-body text-danger"><b>Failed Flow</b><br>
+            <p class="card-text">TC-015 DriverApp-AssignedTrip_VehicleAssignment<br></p>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0"><button class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#flow-0-TC-015-DriverApp-AssignedTrip_VehicleAssignment" aria-expanded="false" aria-controls="flow-0-TC-015-DriverApp-AssignedTrip_VehicleAssignment">TC-015 DriverApp-AssignedTrip_VehicleAssignment : ERROR</button></h5>
+          </div>
+          <div class="collapse" id="flow-0-TC-015-DriverApp-AssignedTrip_VehicleAssignment">
+            <div class="card-body">
+              <p class="card-text">Status: ERROR<br>Duration: 3m 45.31s<br>Start Time: <time datetime="2026-10-08T12:11:03.618+06:00">Oct 8, 2026, 12:11:03 BDT</time><br>File Name: TC-015_DriverApp_TripCompletion_VehicleAssignment<br></p>
+              <h6 class="mt-3 mb-2">Properties</h6>
+              <div class="table-responsive">
+                <table class="table table-sm table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Property</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>testCaseId</td>
+                      <td>TC_015</td>
+                    </tr>
+                    <tr>
+                      <td>priority</td>
+                      <td>High</td>
+                    </tr>
+                    <tr>
+                      <td>suite</td>
+                      <td>Trip Request</td>
+                    </tr>
+                    <tr>
+                      <td>type</td>
+                      <td>E2E</td>
+                    </tr>
+                    <tr>
+                      <td>flow</td>
+                      <td>Trip Complete</td>
+                    </tr>
+                    <tr>
+                      <td>tags</td>
+                      <td>smoke,regression</td>
+                    </tr>
+                    <tr>
+                      <td>owner</td>
+                      <td>Hasin Daiyan</td>
+                    </tr>
+                    <tr>
+                      <td>dataSource</td>
+                      <td>http://localhost:8080/AssignedTrip</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="card-text text-danger">Assertion is false: &quot;.*#500001042.*&quot; is visible</p>
+              <h6 class="mt-3 mb-3">Test Steps (75)</h6>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">1. Define variables</span></span><span class="badge bg-light text-dark">3ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">2. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">3. Launch app &quot;com.sci.glidego_driver&quot; with clear state</span></span><span class="badge bg-light text-dark">8.3s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">4. Run Driver2Login.yaml</span></span><span class="badge bg-light text-dark">60.6s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">5. Apply configuration</span></span><span class="badge bg-light text-dark">0ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">6. Launch app &quot;com.sci.glidego_driver&quot; with clear state</span></span><span class="badge bg-light text-dark">7.8s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">7. Tap on &quot;English&quot;</span></span><span class="badge bg-light text-dark">10.7s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">8. Tap on &quot;Continue&quot;</span></span><span class="badge bg-light text-dark">3.0s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">9. Repeat 8 times</span></span><span class="badge bg-light text-dark">8.2s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">10. Tap on point (45%,10%)</span></span><span class="badge bg-light text-dark">956ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">11. Run ../Scripts/LoginTestData/Driver2Login.js</span></span><span class="badge bg-light text-dark">968ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">12. Tap on &quot;Continue as Guest&quot;</span></span><span class="badge bg-light text-dark">2.8s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">13. Tap on &quot;Enter your email&quot;</span></span><span class="badge bg-light text-dark">4.1s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">14. Input text mohai.islam@savethechildren.org</span></span><span class="badge bg-light text-dark">5.6s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">15. Tap on &quot;Done&quot;</span></span><span class="badge bg-light text-dark">3.9s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">16. Tap on &quot;Enter your password&quot;</span></span><span class="badge bg-light text-dark">3.5s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">17. Input text 12345</span></span><span class="badge bg-light text-dark">2.3s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">18. Tap on &quot;Done&quot;</span></span><span class="badge bg-light text-dark">4.0s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">19. Tap on &quot;Sign In&quot;</span></span><span class="badge bg-light text-dark">2.8s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">20. Assert that &quot;Home&quot; is visible</span></span><span class="badge bg-light text-dark">791ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">21. Assert that &quot;My Trips.*&quot; is visible</span></span><span class="badge bg-light text-dark">497ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">22. Run ../Scripts/DriverApp_AssignedTrip/AssignedTripVehicleAssignment.js</span></span><span class="badge bg-light text-dark">34ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">23. Assert that &quot;My Trips.*&quot; is visible</span></span><span class="badge bg-light text-dark">800ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">24. Tap on &quot;My Trips
+Tab 2 of 5&quot;</span></span><span class="badge bg-light text-dark">4.2s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">25. Assert that &quot;Search...&quot; is visible</span></span><span class="badge bg-light text-dark">204ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">26. Tap on &quot;Search...&quot;</span></span><span class="badge bg-light text-dark">3.8s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">27. Input text Automation_MobileTest_vehicleAssignment</span></span><span class="badge bg-light text-dark">6.9s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">28. Tap on &quot;Done&quot;</span></span><span class="badge bg-light text-dark">3.8s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">29. Assert that &quot;.*#500001042.*&quot; is visible</span></span><span class="badge bg-light text-dark">243ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">30. Tap on &quot;.*#500001042.*&quot;</span></span><span class="badge bg-light text-dark">3.6s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">31. Assert that &quot;.*Automation_MobileTest_vehicleAssignment.*&quot; is visible</span></span><span class="badge bg-light text-dark">228ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">32. Assert that &quot;.*Automation_MobileTest_vehicleAssignment.*&quot; is visible</span></span><span class="badge bg-light text-dark">188ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">33. Wait for animation to end within 3000 ms</span></span><span class="badge bg-light text-dark">2.0s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">34. Scrolling DOWN until &quot;Enter Odometer Reading&quot; is visible with speed 40, visibility percentage 100%, timeout 20000 ms, with centering disabled</span></span><span class="badge bg-light text-dark">5.3s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">35. Assert that &quot;Tap to Capture&quot; is visible</span></span><span class="badge bg-light text-dark">234ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">36. Tap on &quot;Tap to Capture&quot;</span></span><span class="badge bg-light text-dark">5.4s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">37. Tap on point (45%,85%)</span></span><span class="badge bg-light text-dark">1.7s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">38. Assert that &quot;Confirm&quot; is visible</span></span><span class="badge bg-light text-dark">192ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">39. Tap on &quot;Confirm&quot;</span></span><span class="badge bg-light text-dark">2.6s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">40. Scrolling DOWN until &quot;Enter Odometer Reading&quot; is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled</span></span><span class="badge bg-light text-dark">2.3s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">41. Tap on &quot;Enter Odometer Reading&quot;</span></span><span class="badge bg-light text-dark">3.8s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">42. Input text 66</span></span><span class="badge bg-light text-dark">3.7s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">43. Hide Keyboard</span></span><span class="badge bg-light text-dark">1.7s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">44. Assert that &quot;Start Trip&quot; is visible</span></span><span class="badge bg-light text-dark">231ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">45. Tap on &quot;Start Trip&quot;</span></span><span class="badge bg-light text-dark">2.9s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">46. Scrolling UP until &quot;Refuel&quot; is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled</span></span><span class="badge bg-light text-dark">6.1s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">47. Tap on &quot;Refuel&quot;</span></span><span class="badge bg-light text-dark">4.3s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">48. Assert that &quot;Enter liters&quot; is visible</span></span><span class="badge bg-light text-dark">203ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">49. Tap on &quot;Enter liters&quot;</span></span><span class="badge bg-light text-dark">4.0s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">50. Input text 5</span></span><span class="badge bg-light text-dark">1.3s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">51. Hide Keyboard</span></span><span class="badge bg-light text-dark">1.6s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">52. Tap on &quot;Enter Amount&quot;</span></span><span class="badge bg-light text-dark">4.0s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">53. Input text 1000</span></span><span class="badge bg-light text-dark">1.8s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">54. Hide Keyboard</span></span><span class="badge bg-light text-dark">1.5s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">55. Scrolling DOWN until &quot;Amount Paid&quot; is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled</span></span><span class="badge bg-light text-dark">178ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">56. Tap on &quot;Paid Cash&quot;</span></span><span class="badge bg-light text-dark">2.8s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">57. Scrolling DOWN until &quot;Submit Refueling&quot; is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled</span></span><span class="badge bg-light text-dark">4.8s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">58. Tap on &quot;Tap to Capture&quot;</span></span><span class="badge bg-light text-dark">5.2s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">59. Tap on point (45%,85%)</span></span><span class="badge bg-light text-dark">1.7s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">60. Assert that &quot;Confirm&quot; is visible</span></span><span class="badge bg-light text-dark">179ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">61. Tap on &quot;Confirm&quot;</span></span><span class="badge bg-light text-dark">2.6s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">62. Tap on &quot;Enter refuel odometer value&quot;</span></span><span class="badge bg-light text-dark">6.1s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">63. Input text 67</span></span><span class="badge bg-light text-dark">1.5s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">64. Hide Keyboard</span></span><span class="badge bg-light text-dark">1.6s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">65. Tap on &quot;Take Photo of Receipt&quot;</span></span><span class="badge bg-light text-dark">3.1s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">66. Tap on &quot;Camera&quot;</span></span><span class="badge bg-light text-dark">5.9s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">67. Tap on id: normal_center_button</span></span><span class="badge bg-light text-dark">3.2s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">68. Tap on &quot;OK&quot;</span></span><span class="badge bg-light text-dark">5.3s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">69. Scrolling UP until &quot;Submit Refueling&quot; is visible with speed 40, visibility percentage 100%, timeout 10000 ms, with centering disabled</span></span><span class="badge bg-light text-dark">6.1s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">70. Tap on &quot;Submit Refueling&quot;</span></span><span class="badge bg-light text-dark">3.0s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">71. Assert that &quot;Refueling Summary&quot; is visible</span></span><span class="badge bg-light text-dark">1.9s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">72. Assert that &quot;Total Cost&quot; is visible</span></span><span class="badge bg-light text-dark">948ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">73. Assert that &quot;৳ 1000.*&quot; is visible</span></span><span class="badge bg-light text-dark">181ms</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>✅ <span class="step-name">74. Tap on &quot;Home&quot;, Index: 0</span></span><span class="badge bg-light text-dark">5.2s</span></div>
+              </div>
+              <div class="step-item mb-2">
+                <div class="step-header d-flex justify-content-between align-items-center"><span>❌ <span class="step-name">75. Assert that &quot;.*#500001042.*&quot; is visible</span></span><span class="badge bg-light text-dark">10.6s</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>.step-item {
+    border-left: 3px solid #dee2e6;
+    padding-left: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.step-header {
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.step-name {
+    font-weight: 500;
+}
+</style>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    </div>
+  </body>
+</html>

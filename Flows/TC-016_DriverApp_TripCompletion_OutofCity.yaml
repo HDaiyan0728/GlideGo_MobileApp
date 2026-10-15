@@ -1,0 +1,238 @@
+appId: com.sci.glidego_driver
+
+
+name: TC-016 DriverApp-AssignedTrip_OutofCity
+description: |
+  Trip Complete in GlideGo DriverApp
+
+properties:
+  testCaseId: TC_016
+  priority: High
+  suite: Trip Request
+  type: E2E
+  flow: Trip Complete
+  tags: "smoke,regression"
+  owner: Hasin Daiyan
+  dataSource: http://localhost:8080/AssignedTrip
+
+---
+# =========================================================
+# Step 1: Reset app & login
+# =========================================================
+- launchApp:
+    clearState: true
+
+- runFlow: Driver2Login.yaml
+
+- extendedWaitUntil:
+    visible: "My Trips.*"
+    timeout: 15000
+
+# =========================================================
+# Step 2: Load row data from Excel (auto-generated script)
+# =========================================================
+- runScript: "../Scripts/DriverApp_AssignedTrip/AssignedTripoutofcity.js"
+
+# =========================================================
+# Step 3: Go to My Trips and search for the trip
+# =========================================================
+- extendedWaitUntil:
+    visible: "My Trips.*"
+    timeout: 10000
+- tapOn: "My Trips\nTab 2 of 5"
+
+- extendedWaitUntil:
+    visible: "Search..."
+    timeout: 10000
+- tapOn: "Search..."
+- inputText: ${output.searchText}
+- tapOn: "Done"
+
+# =========================================================
+# Step 4: Open the matching trip
+# =========================================================
+- extendedWaitUntil:
+    visible: ".*#${output.tripId}.*"
+    timeout: 10000
+- tapOn:
+    text: ".*#${output.tripId}.*"
+
+- extendedWaitUntil:
+    visible: ".*${output.tripName}.*"
+    timeout: 10000
+- assertVisible: ".*${output.tripName}.*"
+
+
+# =========================================================
+# Step 5: Handle Daily Check if not submitted
+# =========================================================
+- waitForAnimationToEnd:
+    timeout: 3000
+
+#- runFlow:
+ #   when:
+  #    visible: ".*Daily Check not submitted.*"
+   # commands:
+    #  - tapOn: ".*Submit Checklist.*"
+#
+ #     - extendedWaitUntil:
+  #        visible: "Check All"
+   #       timeout: 10000
+    #  - tapOn: "Check All"
+#
+#      - extendedWaitUntil:
+ #         visible: "Mark as Complete"
+  #        timeout: 10000
+   #   - tapOn: "Mark as Complete"
+
+# =========================================================
+# Step 6: Scroll to Trip Start Verification
+# =========================================================
+- scrollUntilVisible:
+    element:
+      text: "Enter Odometer Reading"
+    direction: DOWN
+    timeout: 20000
+
+# =========================================================
+# Step 7: Capture proof / photo
+# =========================================================
+- extendedWaitUntil:
+    visible: "Tap to Capture"
+    timeout: 5000
+- tapOn: "Tap to Capture"
+
+- tapOn:
+    point: 45%,85%
+
+- extendedWaitUntil:
+    visible: "Confirm"
+    timeout: 8000
+- tapOn: "Confirm"
+
+# =========================================================
+# Step 8: Enter odometer (from Excel)
+# =========================================================
+- scrollUntilVisible:
+    element:
+      text: "Enter Odometer Reading"
+    direction: DOWN
+    timeout: 10000
+- tapOn: "Enter Odometer Reading"
+- inputText: ${output.newOdometer}
+- hideKeyboard
+
+# =========================================================
+# Step 9: Start the trip
+# =========================================================
+- extendedWaitUntil:
+    visible: "Start Trip"
+    timeout: 5000
+- tapOn: "Start Trip"
+
+# =========================================================
+# Step 10: Refuel (data driven)
+# =========================================================
+- scrollUntilVisible:
+    element:
+      text: "Refuel"
+    direction: UP
+    timeout: 10000
+- tapOn: "Refuel"
+
+- extendedWaitUntil:
+    visible: "Enter liters"
+    timeout: 10000
+- tapOn: "Enter liters"
+- inputText: ${output.refuelLiters}
+- hideKeyboard
+
+- tapOn: "Enter Amount"
+- inputText: ${output.refuelAmount}
+- hideKeyboard
+
+- scrollUntilVisible:
+    element:
+      text: "Amount Paid"
+    direction: DOWN
+    timeout: 10000
+- tapOn: "Paid Cash"
+
+- scrollUntilVisible:
+    element:
+      text: "Submit Refueling"
+    direction: DOWN
+    timeout: 10000
+
+# Odometer photo
+- tapOn: "Tap to Capture"
+- tapOn:
+    point: 45%,85%
+- extendedWaitUntil:
+    visible: "Confirm"
+    timeout: 8000
+- tapOn: "Confirm"
+
+- tapOn: "Enter refuel odometer value"
+- inputText: ${output.refuelOdometer}
+- hideKeyboard
+
+# Receipt photo
+- tapOn: "Take Photo of Receipt"
+- tapOn: "Camera"
+- tapOn:
+    id: "normal_center_button"
+- tapOn: "OK"
+
+- scrollUntilVisible:
+    element:
+      text: "Submit Refueling"
+    direction: UP
+    timeout: 10000
+
+- tapOn: "Submit Refueling"
+
+# Summary checks
+- assertVisible: "Refueling Summary"
+- assertVisible: "Total Cost"
+- assertVisible: "৳ ${output.refuelAmount}.*"
+
+# =========================================================
+# Step 11: Back to Home and reopen the trip
+# =========================================================
+- tapOn:
+    text: "Home"
+    index: 0
+
+- extendedWaitUntil:
+    visible: ".*#${output.tripId}.*"
+    timeout: 10000
+- assertVisible: ".*#${output.tripId}.*Ongoing.*"
+- tapOn: ".*#${output.tripId}.*"
+
+# =========================================================
+# Step 12: End trip (data driven)
+# =========================================================
+- scrollUntilVisible:
+    element:
+      text: "Capture Ending Odometer"
+    direction: DOWN
+    timeout: 10000
+
+- tapOn: "Tap to Capture"
+- tapOn:
+    point: 45%,85%
+- extendedWaitUntil:
+    visible: "Confirm"
+    timeout: 8000
+- tapOn: "Confirm"
+
+- tapOn: "Enter Odometer Reading"
+- inputText: ${output.endOdometer}
+- hideKeyboard
+
+- tapOn: "Complete Trip"
+
+- assertVisible: "Trip Completed"
+- tapOn: "Back to Home"
+

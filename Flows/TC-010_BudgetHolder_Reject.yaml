@@ -1,0 +1,73 @@
+appId: com.sci.glidego_rider
+
+name: TC-010 Budget Holder Rejection 
+
+properties:
+  testCaseId: TC_010
+  priority: High
+  suite: Budget Holder
+  type: E2E
+  flow: Rejection
+  tags: "smoke,regression,budget-holder,rejection"
+  owner: Hasin Daiyan
+
+
+---
+- runFlow: BudgetHolderLogin.yaml
+- clearKeychain  
+- runScript: "../Scripts/BudgetHolder/Reject.js"
+
+- extendedWaitUntil:
+    visible: "Approvals"
+    timeout: 5000
+- tapOn: "Approvals"
+
+- extendedWaitUntil:
+    visible: "Search trip number, title"
+    timeout: 3000
+- tapOn: "Search trip number, title"
+- inputText: ${output.tripTitle}
+- tapOn: "Done"
+
+- extendedWaitUntil:
+    visible: ".*#${output.tripId}.*"
+    timeout: 5000
+- tapOn:
+    text: ".*#${output.tripId}.*"
+
+- extendedWaitUntil:
+    visible: "Reject"
+    timeout: 3000
+- tapOn: "Reject"
+
+- extendedWaitUntil:
+    visible: "Briefly explain why this request is being rejected"
+    timeout: 3000
+- tapOn: "Briefly explain why this request is being rejected"
+- inputText: ${output.rejectReason}
+- hideKeyboard
+- tapOn: "Confirm Rejection"
+
+- tapOn: "Rejected\nTab 3 of 3"
+
+- doubleTapOn: 
+    below: "Approvals"
+    index: 0
+- eraseText
+
+- tapOn: "Search trip number, title"
+- inputText: ${output.tripTitle}
+- tapOn: "Done"
+
+- extendedWaitUntil:
+    visible: "#${output.tripId}"
+    timeout: 5000
+- assertVisible: "#${output.tripId}"
+
+- tapOn:
+    text: "#${output.tripId}"
+
+- assertVisible: "Trip ID #${output.tripId}"
+- assertVisible: ${output.expected}
+
+- killApp

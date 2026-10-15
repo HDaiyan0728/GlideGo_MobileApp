@@ -1,0 +1,12 @@
+[
+  {
+    "tripId": "500001041",
+    "tripName": "Automation_MobileTest_Airport",
+    "searchText": "Automation_MobileTest_Airport",
+    "newOdometer": "40",
+    "refuelLiters": "5",
+    "refuelAmount": "1000",
+    "refuelOdometer": "41",
+    "endOdometer": "42"
+  }
+]

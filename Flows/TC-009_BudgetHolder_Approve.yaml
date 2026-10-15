@@ -1,0 +1,68 @@
+appId: com.sci.glidego_rider
+
+name: TC-009 Budget Holder Approval
+
+properties:
+  testCaseId: TC_009
+  priority: High
+  suite: Budget Holder
+  type: E2E
+  flow: Approval
+  tags: "smoke,regression,budget-holder,approval"
+  owner: Hasin Daiyan
+
+---
+- runFlow: BudgetHolderLogin.yaml
+- clearKeychain
+- runScript: "../Scripts/BudgetHolder/Approve.js"
+
+
+- tapOn: "Approvals"
+- tapOn: "Pending\nTab 1 of 3"
+- tapOn: "Search trip number, title"
+- inputText: ${output.tripTitle}
+- pressKey: enter
+
+
+
+- extendedWaitUntil:
+    visible: ".*#${output.tripId}.*"
+    timeout: 5000
+- tapOn:
+    text: ".*#${output.tripId}.*"
+
+- extendedWaitUntil:
+    visible: "Approve"
+    timeout: 3000
+- tapOn: "Approve"
+
+- extendedWaitUntil:
+    visible: "Back to Approvals"
+    timeout: 5000
+- tapOn: "Back to Approvals"
+
+- tapOn: "Approved\nTab 2 of 3"
+
+- doubleTapOn: 
+    below: "Approvals"
+    index: 0
+- eraseText
+    
+
+
+- tapOn: "Search trip number, title"
+- inputText: ${output.tripTitle}
+- tapOn: "Done"
+
+- extendedWaitUntil:
+    visible: ".*#${output.tripId}.*"
+    timeout: 5000
+- assertVisible: ".*#${output.tripId}.*"
+
+- tapOn:
+    text: ".*#${output.tripId}.*"
+
+- assertVisible: "Trip ID #${output.tripId}"
+- assertVisible: ${output.expected}
+
+- killApp

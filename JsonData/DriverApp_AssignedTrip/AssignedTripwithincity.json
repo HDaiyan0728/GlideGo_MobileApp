@@ -1,0 +1,12 @@
+[
+  {
+    "tripId": "500001113",
+    "tripName": "Automation_MobileTest_withincity",
+    "searchText": "Automation_MobileTest_withincity",
+    "newOdometer": "77",
+    "refuelLiters": "5",
+    "refuelAmount": "1000",
+    "refuelOdometer": "78",
+    "endOdometer": "79"
+  }
+]

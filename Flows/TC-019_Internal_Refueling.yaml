@@ -1,0 +1,123 @@
+appId: com.sci.glidego_driver
+
+name: TC-019 DriverApp-InternalRefueling
+description: |
+  Internal Refueling in GlideGo DriverApp
+
+properties:
+  testCaseId: TC_019
+  priority: High
+  suite: Trip Request
+  type: E2E
+  flow: Trip Complete
+  tags: "smoke,regression"
+  owner: Hasin Daiyan
+  dataSource: http://localhost:8080/AssignedTrip
+
+---
+# =========================================================
+# Step 1: Reset app & login
+# =========================================================
+- launchApp:
+    clearState: true
+
+- runFlow: Driver_Login.yaml
+
+- extendedWaitUntil:
+    visible: "My Trips.*"
+    timeout: 15000
+
+# =========================================================
+# Step 2: Load row data from Excel (auto-generated script)
+# =========================================================
+- runScript: "../Scripts/DriverApp_Refuel/InternalRefuel.js"
+
+# =========================================================
+# Step 3: Navigate to Refueling tab
+# =========================================================
+- extendedWaitUntil:
+    visible: "Refueling.*"
+    timeout: 10000
+- tapOn: "Refueling\nTab 4 of 5"
+
+# =========================================================
+# Step 4: Select vehicle (data driven)
+# =========================================================
+- extendedWaitUntil:
+    visible: "Select Vehicle"
+    timeout: 10000
+- tapOn:
+    text: "Select Vehicle"
+    index: 1
+
+- extendedWaitUntil:
+    visible: ".*${output.vehicleName}.*"
+    timeout: 10000
+- tapOn: ".*${output.vehicleName}.*"
+
+# =========================================================
+# Step 5: Enter refueling amount in liters (from Excel)
+# =========================================================
+- assertVisible: "Refueling Amount"
+- extendedWaitUntil:
+    visible: "Enter liters"
+    timeout: 10000
+- tapOn: "Enter liters"
+- inputText: ${output.refuelLiters}
+- hideKeyboard
+
+# =========================================================
+# Step 6: Enter total cost (from Excel)
+# =========================================================
+- assertVisible: "Total Cost"
+- extendedWaitUntil:
+    visible: "Enter Amount"
+    timeout: 10000
+- tapOn: "Enter Amount"
+- inputText: ${output.refuelAmount}
+- tapOn: "Done"
+
+
+# =========================================================
+# Step 7: Scroll to odometer capture section
+# =========================================================
+- scrollUntilVisible:
+    element:
+      text: "Submit Refueling"
+    timeout: 10000
+
+- assertVisible: "Capture Odometer"
+
+# =========================================================
+# Step 8: Capture odometer photo
+# =========================================================
+- tapOn: "Tap to Capture"
+
+- tapOn:
+    point: 45%,85%
+
+- extendedWaitUntil:
+    visible: "Confirm"
+    timeout: 8000
+- tapOn: "Confirm"
+
+# =========================================================
+# Step 9: Enter odometer reading (from Excel)
+# =========================================================
+- extendedWaitUntil:
+    visible: "Odometer Reading"
+    timeout: 10000
+- tapOn:
+    below: 
+        text: "Odometer Reading"
+        index: 1
+
+- inputText: ${output.odometerReading}
+- tapOn: "Done"
+
+
+
+# =========================================================
+# Step 10: Submit refueling 
+# =========================================================
+- tapOn: "Submit Refueling"

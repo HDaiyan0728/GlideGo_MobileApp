@@ -1,0 +1,9 @@
+[
+  {
+    "testCaseId": "TC_020",
+    "searchText": "Automation-WithinCity",
+    "tripId": "500000938",
+    "expectedTripStatus": "Pending",
+    "cancellationReason": "test"
+  }
+]

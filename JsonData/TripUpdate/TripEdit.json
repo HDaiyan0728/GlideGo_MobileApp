@@ -1,0 +1,9 @@
+[
+  {
+    "testCaseId": "TC_022",
+    "searchText": "Automation-AirportPickUporDropoff",
+    "tripId": "500001120",
+    "editedPurpose": "500001070 Edited",
+    "expectedStatus": "Pending Budget Holder Approval"
+  }
+]

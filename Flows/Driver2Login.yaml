@@ -1,0 +1,30 @@
+appId: com.sci.glidego_driver
+---
+- launchApp:
+    clearState: true
+
+- tapOn: "English"
+- tapOn: "Continue"
+
+- repeat:
+    times: 8
+    commands:
+      - tapOn:
+          point: 45%,10%
+
+
+- runScript: "../Scripts/LoginTestData/Driver2Login.js"
+
+
+- tapOn: "Continue as Guest"
+
+- tapOn: "Enter your email"
+- inputText: ${output.email}
+- tapOn: "Done"
+
+- tapOn: "Enter your password"
+- inputText: ${output.password}
+- tapOn: "Done"
+
+- tapOn: "Sign In"
+- assertVisible: ${output.expected}
